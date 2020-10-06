@@ -15,6 +15,8 @@ app.use(methodOverride('_method'))
 
 const models = require('./db/models');
 require('./controllers/events')(app, models);
+require('./controllers/events')(app, models);
+require('./controllers/rsvps')(app, models);
 
 // Use "main" as our default layout
 app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars: allowInsecurePrototypeAccess(Handlebars) }));

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+
   Event.init({
     title: DataTypes.STRING,
     desc: DataTypes.TEXT,
@@ -22,4 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Event',
   });
   return Event;
+
+  Event.associate = function(models) {
+    Event.hasMany(models.Rsvp);
+  };
+  
 };
