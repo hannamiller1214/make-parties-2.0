@@ -1,7 +1,9 @@
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Event extends Model {
     /**
@@ -22,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Event',
   });
-  return Event;
 
   Event.associate = function(models) {
-    Event.hasMany(models.Rsvp);
+    Event.hasMany(models.Rsvp); // EventId
   };
-  
+
+  return Event;
+
 };

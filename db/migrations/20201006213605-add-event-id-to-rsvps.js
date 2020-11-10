@@ -1,23 +1,23 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-
-    return queryInterface.addColumn('Rsvps', 'EventId', Sequelize.INTEGER).then(() => {
-      return queryInterface.addConstraint('Rsvps', ['EventId'], {
-        type: 'foreign key',
-        name: 'event_rsvps',
-        references: { //Required field
-          table: 'Events',
-          field: 'id'
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      });
-    });
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.addColumn(
+      'Rsvps', // name of source model
+      'EventId', // name of key we are adding
+      {
+      type: Sequelize.INTEGER,
+      references: { //Required field
+        model: 'Events',
+        key: 'id'
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+      }
+    );
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('Rsvps', 'EventId');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn('Rsvps', 'EventId');
   }
 };

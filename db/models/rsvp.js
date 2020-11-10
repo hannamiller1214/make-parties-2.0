@@ -1,7 +1,9 @@
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Rsvp extends Model {
     /**
@@ -13,18 +15,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  
+
   Rsvp.init({
     name: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Rsvp',
   });
-  return Rsvp;
 
   Rsvp.associate = function(models) {
     Rsvp.belongsTo(models.Event); // EventId
   };
+
+  return Rsvp;
 
 };

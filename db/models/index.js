@@ -1,8 +1,6 @@
 'use strict';
 
-// const Handlebars = require('handlebars');
-// const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
-// const exphbs =  require('express-handlebars');
+const exphbs =  require('express-handlebars');
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
